@@ -4,9 +4,15 @@ import styled from 'styled-components'
 
 export default function InputData (props) {
  
-    const {text} = props; 
+    const {placeholder, type, value, onChange} = props; 
     return (
-      <Input placeholder = {text} />
+      <Input 
+        placeholder = {placeholder} 
+        type = {type} 
+        value = {value}
+        onChange = {onChange}
+        required
+     />
     );
 }
 

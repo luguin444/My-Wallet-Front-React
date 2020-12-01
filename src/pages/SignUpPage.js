@@ -29,32 +29,28 @@ export default function SignUpPage () {
             <FormWrapper onSubmit = {persistUserDataInServer}>
 
                 <InputData
-                     text = "Nome" 
+                     placeholder = "Nome" 
                      onChange = {(e) => setName(e.target.value)} 
                      value = {name} 
                      type = "text"
-                     required 
                 />
                 <InputData 
-                    text = "E-mail" 
+                    placeholder = "E-mail" 
                     onChange = {(e) => setEmail(e.target.value)} 
                     value = {email} 
-                    type = "email"
-                    required 
+                    type = "email" 
                  />
                 <InputData 
-                    text = "Senha" 
+                    placeholder = "Senha" 
                     onChange = {(e) => setPassword(e.target.value)} 
                     value = {password} 
-                    type = "password"
-                    required 
+                    type = "password" 
                 />
                 <InputData 
-                    text = "Confirme a senha"
+                    placeholder = "Confirme a senha"
                     onChange = {(e) => setConfirmPassword(e.target.value)} 
                     value = {confirmPassword} 
-                    type = "password"
-                    required 
+                    type = "password" 
                 />
 
                 <ButtonBox text = "Cadastrar" type = "submit"></ButtonBox>
