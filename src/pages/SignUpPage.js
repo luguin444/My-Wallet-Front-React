@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { useHistory } from "react-router-dom";
 import styled from 'styled-components'
+import axios from 'axios';
 
 import InputData from '../components/InputData'
 import ButtonBox from '../components/ButtonBox'
@@ -18,9 +19,15 @@ export default function SignUpPage () {
     function persistUserDataInServer(e) {
 
         e.preventDefault();
-
         const body = {name,email,password,confirmPassword};
-        console.log(body);
+
+        const promise = axios.post('http://localhost:3000/api/sign-up', body);
+
+        promise.then(res => {
+            history.push('/sign-in');
+        }).catch (e => {
+            console.log("Deu ruim o Sign up: error " + e.response.status);
+        })
     }
  
     return (
@@ -82,7 +89,8 @@ export const FormWrapper = styled.form`
     min-width: 100vw;
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
+    padding: 0 1.25rem;
 `
 
 export const Footer = styled.footer`

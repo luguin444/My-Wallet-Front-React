@@ -18,7 +18,7 @@ const StyledButton = styled.button`
     border-radius: 5px;
     width: 326px;
     height: 46px;
-    width: 84%;
+    width: 100%;
     outline: 0;
     border: 0;
     color: #FFF;

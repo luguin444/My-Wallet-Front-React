@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
+import axios from 'axios'
 import { useHistory } from "react-router-dom";
 import InputData from '../components/InputData'
 import ButtonBox from '../components/ButtonBox'
 import { ContainerPage, H1, FormWrapper, Footer} from './SignUpPage'
+import UserContext from '../Contexts/UserContext'
 
 
 export default function SignInPage () {
@@ -11,13 +13,22 @@ export default function SignInPage () {
     const [password, setPassword] = useState('');
 
     const history = useHistory();
+    const {setUser} = useContext(UserContext);
 
     function sendindDataToServerLogIn(e) {
 
         e.preventDefault();
 
         const body = {email,password};
-        console.log(body);
+        
+        const promise = axios.post('http://localhost:3000/api/sign-in', body);
+
+        promise.then(res => {
+            setUser(res.data);
+            history.push('/');
+        }).catch (e => {
+            console.log("Deu ruim o Sign in: error " + e.response.status);
+        })   
     }
  
     return (

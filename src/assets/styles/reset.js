@@ -134,4 +134,8 @@ export default css`
   * {
     box-sizing: border-box;
   }
+
+  a {
+    text-decoration: none;
+  }
 `;
