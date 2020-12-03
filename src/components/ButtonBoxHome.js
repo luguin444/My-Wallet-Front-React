@@ -41,6 +41,7 @@ const StyledButton = styled.button`
     flex-direction: column;
     justify-content: space-between;
     font-size: 1.1rem;
+    text-align: start;
 
     .icon {
         font-size: 1.5rem;

@@ -5,6 +5,7 @@ import { VscSignOut } from 'react-icons/vsc'
 import {Title} from '../pages/NewData';
 import UserContext from '../Contexts/UserContext';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 export default function HeaderHome() {
 
@@ -12,14 +13,20 @@ export default function HeaderHome() {
     const history = useHistory();
 
     function signOut() {
-        setUser(null);
-        history.push('/sign-in');
+
+
+            const request =  axios.post('http://localhost:3000/api/sign-out', {}, { headers: {Authorization: `Bearer ${user.token}`}});
+            request.then(() => {
+                setUser(null);
+                history.push('/sign-in');
+            }).catch( e => {
+                console.log(e.response);
+            })
     }
  
     return (
         <HeaderStyled>
-            {/* <Title>{`Olá, ${user.name}`}</Title> */}
-            <Title>{`Olá, Fulano`}</Title>
+            <Title>{`Olá, ${user.name}`}</Title>
             <VscSignOut className = 'icon' onClick = {signOut} />
         </HeaderStyled>
     );
