@@ -7,12 +7,14 @@ export default function Financie (props) {
 
     const { financie, total, setTotal } = props;
 
-    useEffect(() => {
-        if (financie.type === "in")
-            setTotal(total + parseInt(financie.value));
-        else 
-            setTotal(total - parseInt(financie.value));
-    },[]);
+    // useEffect(() => {
+    //     if (financie.type === "in") {
+    //         let aux = total + parseFloat(financie.value);
+    //         setTotal(aux);
+    //     }
+    //     else 
+    //         setTotal(total - parseFloat(financie.value));
+    // },[]);
 
  
     return (

@@ -1,35 +1,18 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-import InputData from '../components/InputData'
-import ButtonBox from '../components/ButtonBox'
 import { useParams } from "react-router-dom";
+import FormNewFinancie from '../components/FormNewFinancie';
+
 
 
 export default function NewData() {
 
-    const { type } = useParams();
-
-    const [value, setValue] = useState('');
-    const [description, setDescription] = useState('');
+    const { type } = useParams();  
  
     return (
       <WrapperPage>
             <Title>{type === "in" ? "Nova entrada": "Nova saída" }</Title>
-            <form>
-                <InputData 
-                    placeholder = "Valor" 
-                    onChange = {(e) => setValue(e.target.value)} 
-                    value = {value} 
-                    type = "number"
-                />
-                <InputData 
-                    placeholder = "Descrição" 
-                    onChange = {(e) => setDescription(e.target.value)} 
-                    value = {description} 
-                    type = "text"
-                />
-                <ButtonBox text = {type === "in" ? "Salvar entrada": "Salvar saída" } type = "submit"></ButtonBox>
-            </form>       
+            <FormNewFinancie type = {type}/>
       </WrapperPage>
     );
 }
