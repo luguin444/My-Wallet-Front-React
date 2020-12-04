@@ -14,19 +14,21 @@ export default function FormNewFinancie (props) {
     const [value, setValue] = useState('');
     const [description, setDescription] = useState('');
 
-    function sendFinancieToServer() {
+    function sendFinancieToServer(e) {
+
+        e.preventDefault();
 
         const body = {value,description,type};
         const promise = axios.post('http://localhost:3000/api/financies', body, {headers: {Authorization: `Bearer ${user.token}`}})
+        // const promise = axios.post('https://wallet-bootcamp.herokuapp.com/api/financies', body, {headers: {Authorization: `Bearer ${user.token}`}})
 
         promise.then((res) => {
-            alert("uhsuahs");
             history.push('/');
         });
     }
  
     return (
-        <form onSubmit = {sendFinancieToServer}>
+        <form onSubmit = {(e) => sendFinancieToServer(e)}>
             <InputData 
                 placeholder = "Valor" 
                 onChange = {(e) => setValue(e.target.value)} 

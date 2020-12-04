@@ -16,9 +16,11 @@ export default function HeaderHome() {
 
 
             const request =  axios.post('http://localhost:3000/api/sign-out', {}, { headers: {Authorization: `Bearer ${user.token}`}});
+            // const request =  axios.post('https://wallet-bootcamp.herokuapp.com/api/sign-out', {}, { headers: {Authorization: `Bearer ${user.token}`}});
+            
             request.then(() => {
-                setUser(null);
                 history.push('/sign-in');
+                setUser(null);              
             }).catch( e => {
                 console.log(e.response);
             })

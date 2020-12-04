@@ -6,16 +6,6 @@ import dayjs from 'dayjs'
 export default function Financie (props) {
 
     const { financie, total, setTotal } = props;
-
-    // useEffect(() => {
-    //     if (financie.type === "in") {
-    //         let aux = total + parseFloat(financie.value);
-    //         setTotal(aux);
-    //     }
-    //     else 
-    //         setTotal(total - parseFloat(financie.value));
-    // },[]);
-
  
     return (
         <WrapperFinancie isIn ={ financie.type === "in"}>

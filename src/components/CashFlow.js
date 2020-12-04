@@ -11,23 +11,22 @@ export default function CashFlow (props) {
 
     const [financies, setFinancies] = useState([]);
     const [total, setTotal] = useState(0);
-    const [flag, setFlag] = useState(0);
 
     const {user} = useContext(UserContext);
 
     useEffect(() => {
         
         const promise = axios.get('http://localhost:3000/api/financies', {headers: {Authorization: `Bearer ${user.token}`}});
+        //const promise = axios.get('https://wallet-bootcamp.herokuapp.com/api/financies', {headers: {Authorization: `Bearer ${user.token}`}});
         promise.then(res => {
             setFinancies(res.data);
-            setFlag(flag +1);
-            console.log(res.data);
+            calculateTotal(res.data);
         }).catch( e => {
             console.log("Erro na aquisição de entradas e saídas");
         })
     },[])
 
-    useEffect(() => {
+    function calculateTotal(financies) {
         let sum = 0;
         financies.forEach( f => {
             if (f.type === "in") 
@@ -36,7 +35,7 @@ export default function CashFlow (props) {
                 sum = sum - parseFloat(f.value);  
         })
         setTotal(sum);
-    }, [flag]);
+    }
 
     return (
         <StyledCashFlow isThereAnyFinancie ={ financies.length !== 0} totalIsPositive = {total >= 0}>
@@ -66,6 +65,7 @@ const StyledCashFlow = styled.div`
     align-items:  ${ (props) => props.isThereAnyFinancie ? "start" : "center"};
     justify-content: ${ (props) => props.isThereAnyFinancie ? "start" : "center"};
     position: relative;
+    overflow: scroll;
 
     p{
         font-family: Raleway;

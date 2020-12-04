@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": "npx webpack --mode production"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +18,7 @@
     "axios": "^0.21.0",
     "babel-loader": "^8.2.2",
     "dayjs": "^1.9.6",
+    "express": "^4.17.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",

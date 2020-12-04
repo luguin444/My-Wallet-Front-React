@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react'
 import styled from 'styled-components'
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import HeaderHome from '../components/HeaderHome';
 import ButtonBoxHome from '../components/ButtonBoxHome';
@@ -9,14 +9,15 @@ import CashFlow from '../components/CashFlow';
    
 export default function Home() {
 
- 
+  const history = useHistory();
+
     return (
       <WrapperPage>
         <HeaderHome />
         <CashFlow />
         <ContainerButtons>
-            <Link to = 'newData/in' > <ButtonBoxHome type = "entrance"> </ButtonBoxHome> </Link>
-            <Link to = 'newData/out' > <ButtonBoxHome type = "out"></ButtonBoxHome> </Link>
+            <ButtonBoxHome type = "entrance" onClick = {() => history.push('newData/in')} > </ButtonBoxHome> 
+            <ButtonBoxHome type = "out" onClick = {() => history.push('newData/out')} ></ButtonBoxHome>
         </ContainerButtons>
       </WrapperPage>
     );

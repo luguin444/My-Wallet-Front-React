@@ -6,10 +6,10 @@ import { AiOutlineMinusCircle } from 'react-icons/ai'
 
 export default function ButtonBoxHome(props) {
 
-    const { type } = props;
+    const { type , onClick } = props;
  
     return (
-        <StyledButton>
+        <StyledButton onClick = {onClick}>
             { type === "entrance" ? 
                 <>
                     <HiOutlinePlusCircle className = "icon" /> 
@@ -34,8 +34,7 @@ const StyledButton = styled.button`
     font-family: Raleway;
     font-weight: bold;
     height: 7rem;
-    //flex-grow: 1; deu ruim as margens centrais ou laterais 
-    width: 9.5rem;
+    width: 47%;
     padding: 0.6rem;
     display: flex;
     flex-direction: column;
