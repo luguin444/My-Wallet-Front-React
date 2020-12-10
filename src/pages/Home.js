@@ -5,11 +5,18 @@ import { Link, useHistory } from "react-router-dom";
 import HeaderHome from '../components/HeaderHome';
 import ButtonBoxHome from '../components/ButtonBoxHome';
 import CashFlow from '../components/CashFlow';
+import UserContext from '../Contexts/UserContext';
 
    
 export default function Home() {
 
   const history = useHistory();
+  const {user} = useContext(UserContext);
+
+    if (user === null) {
+      history.push('/sign-in');
+      return null;
+    }
 
     return (
       <WrapperPage>

@@ -12,10 +12,6 @@ export default function HeaderHome() {
     const { user, setUser } = useContext(UserContext);
     const history = useHistory();
 
-    if (user === null) {
-        history.push('/sign-in');
-        return null;
-    }
 
     function signOut() {
 
