@@ -19,8 +19,8 @@ export default function FormNewFinancie (props) {
         e.preventDefault();
 
         const body = {value,description,type};
-        const promise = axios.post('http://localhost:3000/api/financies', body, {headers: {Authorization: `Bearer ${user.token}`}})
-        // const promise = axios.post('https://wallet-bootcamp.herokuapp.com/api/financies', body, {headers: {Authorization: `Bearer ${user.token}`}})
+        // const promise = axios.post('http://localhost:3000/api/financies', body, {headers: {Authorization: `Bearer ${user.token}`}})
+        const promise = axios.post('https://wallet-bootcamp.herokuapp.com/api/financies', body, {headers: {Authorization: `Bearer ${user.token}`}})
 
         promise.then((res) => {
             history.push('/');

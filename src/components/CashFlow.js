@@ -16,8 +16,8 @@ export default function CashFlow (props) {
 
     useEffect(() => {
         
-        const promise = axios.get('http://localhost:3000/api/financies', {headers: {Authorization: `Bearer ${user.token}`}});
-        //const promise = axios.get('https://wallet-bootcamp.herokuapp.com/api/financies', {headers: {Authorization: `Bearer ${user.token}`}});
+        //const promise = axios.get('http://localhost:3000/api/financies', {headers: {Authorization: `Bearer ${user.token}`}});
+        const promise = axios.get('https://wallet-bootcamp.herokuapp.com/api/financies', {headers: {Authorization: `Bearer ${user.token}`}});
         promise.then(res => {
             setFinancies(res.data);
             calculateTotal(res.data);
@@ -43,7 +43,7 @@ export default function CashFlow (props) {
                 (financies.length === 0) ?
                     <p>Não há registro de <br /> entrada ou saída</p> :
                     <>
-                        {financies.map(f => <Financie financie = {f} key = {f.id} total = {total} setTotal = {setTotal}/>)}
+                            {financies.map(f => <Financie financie = {f} key = {f.id} total = {total} setTotal = {setTotal}/>)}               
                         <div className = "total">
                             <strong>SALDO</strong>
                             <span>{total.toFixed(2)}</span>
@@ -77,7 +77,7 @@ const StyledCashFlow = styled.div`
 
     .total {
         position: absolute;
-        bottom: 1rem;
+        bottom: 0.8rem;
         left: 0.8rem;
         display: flex;
         justify-content: space-between;

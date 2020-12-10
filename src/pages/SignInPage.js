@@ -21,8 +21,8 @@ export default function SignInPage () {
 
         const body = {email,password};
         
-        const promise = axios.post('http://localhost:3000/api/sign-in', body);
-        // const promise = axios.post('https://wallet-bootcamp.herokuapp.com/api/sign-in', body);
+        // const promise = axios.post('http://localhost:3000/api/sign-in', body);
+        const promise = axios.post('https://wallet-bootcamp.herokuapp.com/api/sign-in', body);
 
 
         promise.then(res => {
